@@ -15,8 +15,21 @@
         Hello from MVC! <br />
         Today is @ViewData["MyTime"] <br />
         @ViewBag.message <br />
-        @TempData["MyTempData"] <br />
+        @TempData["MyTempData"] <br /> @*After this tempdata is emptied*@
+
+        @*If we want to keep tempdata value to the next request, we use Keep or Peek method*@
+        @*Keep*@
+        @{ 
+            TempData.Keep("MyTempData");
+        }
+        @*Peek*@
+        @{ 
+            string str = TempData.Peek("MyTempData").ToString();
+        }
+        @str
+        
         @Session["MySessionData"] <br /><br />
+
         <ul>
             
                 @{
