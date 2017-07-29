@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyHomePage</title>
+</head>
+<body>
+    <div> 
+        Hello from MVC! <br />
+        Today is @ViewData["MyTime"] <br />
+        @ViewBag.message <br />
+        @TempData["MyTempData"] <br />
+        @Session["MySessionData"] <br /><br />
+        <ul>
+            
+                @{
+                    foreach (var student in ViewData["Students"] as List<string>)
+                    {
+                        <li>
+                            @student
+                        </li>
+                    }
+                }
+                        
+    </ul>
+    </div>
+</body>
+</html>
