@@ -1,0 +1,50 @@
+﻿@model MVCViewModel.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show</title>
+</head>
+<body>
+    @{ 
+        MVCViewModel.Models.User CurrentUser = ViewBag.CurrentUser;
+        MVCViewModel.Models.User cUser = (MVCViewModel.Models.User)ViewData["cUser"];
+    }
+    <div style="text-align:right">
+        @CurrentUser.UserName
+    </div>
+    <div> 
+        <h3>Employee Details</h3>
+        Employee Name: @Model.EmoloyeeName <br />
+        Employee Address: @Model.Address <br />
+        @*Data Transformation Logic*@
+        Employee Age: 
+        @{ 
+            int age = DateTime.Now.Year - Model.DateOfbirth.Year;
+            if (Model.DateOfbirth > DateTime.Now.AddYears(-age))
+            {
+                age--;
+            }
+            @age
+        }
+        <br />
+        @*Presentaion Logic*@
+        Employee Salary:
+        @{
+            if (Model.Salary > 20000)
+            {
+                <span style="color:red">@Model.Salary</span>
+            }
+            else
+            {
+                <span style="color:green">@Model.Salary</span>
+            }
+        }
+    </div>
+</body>
+</html>

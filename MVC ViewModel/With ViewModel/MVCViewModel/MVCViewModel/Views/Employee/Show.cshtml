@@ -1,0 +1,26 @@
+﻿@model MVCViewModel.ViewModel.EmployeeVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show</title>
+</head>
+<body>
+    
+    <div style="text-align:right">
+        @Model.CurrentUser.UserName
+    </div>
+    <div> 
+        <h3>Employee Details</h3>
+        Employee Name: @Model.CurrentEmployee.EmoloyeeName <br />
+        Employee Address: @Model.CurrentEmployee.Address <br />
+        Employee Age: @Model.Age <br />
+        Employee Salary: <span style="color:@Model.SalaryColor">@Model.CurrentEmployee.Salary</span>
+    </div>
+</body>
+</html>
