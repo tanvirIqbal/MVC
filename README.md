@@ -81,3 +81,16 @@ Now
 We need to create a ViewModel class. In that model class we put our Presentation Logic and Data Transformation Logic.
 
 We can put our Presentation Logic and Data Transformation Logic in the view but ViewModel makes it simpler.
+
+
+<b> *** MVC with EF (Code First) *** </b>
+
+This is a code first example. You have your Model and View. In your Model 1 field/property must be a KEY.
+
+1. Create a table (Customer) in the Database
+2. Add EF in your project using Nuget Manager.
+3. Create a Data Access layer folder DAL
+4. Create a DAL class (CustomerDAL).
+5. Add a connection string in Web.Config file. Connnection string's name should match the DAL class.
+6. Map your Model (Customer) to the database Table in the DAL class.
+7. Now in the Controller, use this DAL clase to Insert,Update,Delete,Read in/from the Database.
