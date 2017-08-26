@@ -52,8 +52,6 @@ Regex is a pattern matchining technique.
 
 When a model object is filled with data, the validation happens. If any error occurs, it goes to the Model State class.  
 
-Model binding wont work with validation.
-
 HTML Helper class helps to create UI 
 
 Using validation with Data Annotation is a server side validation. When we submit the form it post back to the server and validation happens. 
@@ -94,3 +92,8 @@ This is a code first example. You have your Model and View. In your Model 1 fiel
 5. Add a connection string in Web.Config file. Connnection string's name should match the DAL class.
 6. Map your Model (Customer) to the database Table in the DAL class.
 7. Now in the Controller, use this DAL clase to Insert,Update,Delete,Read in/from the Database.
+
+<b> *** Partial View *** <b>
+
+Partial views are reusable views.
+We can create custom control with Partial Views.
