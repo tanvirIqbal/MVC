@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ViewModel;
+using System.Threading;
 
 namespace Controllers
 {
@@ -16,7 +17,7 @@ namespace Controllers
         public ActionResult Enter()
         {
             _oCustomerVM = new CustomerVM();
-            RefreshCustomerTable();
+            _oCustomerVM.customer = new Customer();
             return View("EnterCustomer", _oCustomerVM);
         }
 
@@ -34,7 +35,7 @@ namespace Controllers
             {
                 _oCustomerVM.customer = oCustomer;
             }
-            RefreshCustomerTable();
+            GetCustomerFromDB();
             return View("EnterCustomer", _oCustomerVM);
         }
 
@@ -55,10 +56,20 @@ namespace Controllers
             return View("SearchCustomer", _oCustomerVM);
         }
 
-        private void RefreshCustomerTable()
+        private void GetCustomerFromDB()
         {
             CustomerDAL oCustomerDAL = new CustomerDAL();
             _oCustomerVM.customers = oCustomerDAL.Customers.ToList<Customer>();
+        }
+
+        public ActionResult GetCustomer()
+        {
+            _oCustomerVM = new CustomerVM();
+            GetCustomerFromDB();
+            //Delay for simulating lots of customer.
+            Thread.Sleep(10000);
+            return Json(_oCustomerVM.customers, JsonRequestBehavior.AllowGet); // JsonRequestBehavior.AllowGet : HTTP Get
+
         }
     }
 }

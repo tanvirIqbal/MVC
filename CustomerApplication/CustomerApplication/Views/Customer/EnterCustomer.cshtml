@@ -26,11 +26,39 @@
         }
         @Html.ValidationSummary()
 
-        @Html.Partial("cltCustomerTable", Model)
+        @*This is a table which is load from server side*@
+        @*@Html.Partial("cltCustomerTable", Model)*@ 
+
+        <div id="status"></div>
+        @*This is a table which is load from client side*@
+        <table id="tblCustomer" border="1">
+            <tr>
+                <th>Customer Code</th>
+                <th>Customer Name</th>
+            </tr>
+        </table>
+        
 
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script language="javascript">
+        $("#status").text("Loading...");
+        $.get("GetCustomer", null, BindData);
+        function BindData(Customers) {
+            var tblCust = $("#tblCustomer");
+            for (var i = 0; i < Customers.length; i++) {
+                var newRow = "<tr>" +
+                    "<td>" + Customers[i].CustomerCode + "</td>" +
+                    "<td>" + Customers[i].CustomerName + "</td>" +
+                    "</tr>";
+                tblCust.append(newRow);
+            }
+            $("#status").text("");
+        }
+        
+    </script>
+
 </body>
 </html>
