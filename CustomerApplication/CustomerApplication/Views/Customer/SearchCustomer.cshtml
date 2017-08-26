@@ -1,0 +1,29 @@
+﻿@model ViewModel.CustomerVM
+@using Models;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SearchCustomer</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("Search", "Customer", FormMethod.Post))
+        {
+            @Html.Label("Customer Name:")
+            @Html.TextBoxFor(x => x.customer.CustomerName)
+            @Html.ValidationMessageFor(x => x.customer.CustomerName)<br />
+            <input type="submit" id="btnSubmit" value="Search Customer" />
+        }
+        @Html.ValidationSummary()
+
+        @Html.Partial("cltCustomerTable", Model)
+    </div>
+</body>
+</html>

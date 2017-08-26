@@ -1,0 +1,36 @@
+﻿@model ViewModel.CustomerVM
+@using Models;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EnterCustomer</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Submit", "Customer", FormMethod.Post))
+        {
+            @Html.Label("Customer Code:")
+            @Html.TextBoxFor(x => x.customer.CustomerCode)
+            @Html.ValidationMessageFor(x => x.customer.CustomerCode)<br />
+            @Html.Label("Customer Name:")
+            @Html.TextBoxFor(x => x.customer.CustomerName)
+            @Html.ValidationMessageFor(x => x.customer.CustomerName)<br />
+            <input type="submit" id="btnSubmit" value="submit" />
+        }
+        @Html.ValidationSummary()
+
+        @Html.Partial("cltCustomerTable", Model)
+
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

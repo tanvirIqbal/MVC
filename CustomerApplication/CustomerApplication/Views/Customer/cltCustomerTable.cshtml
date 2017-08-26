@@ -1,0 +1,24 @@
+﻿@model ViewModel.CustomerVM
+@using Models;
+<table border="1">
+    <tr>
+        <td>Customer Code</td>
+        <td>Customer Name</td>
+    </tr>
+    @foreach (Customer oCustomer in Model.customers)
+            {
+        <tr>
+            <td>@oCustomer.CustomerCode</td>
+            <td>@oCustomer.CustomerName</td>
+        </tr>
+    }
+
+</table>
+
+@*@{ 
+    WebGrid oWebGrid = new WebGrid(Model.customers);
+}
+@oWebGrid.GetHtml();*@
+
+
+
